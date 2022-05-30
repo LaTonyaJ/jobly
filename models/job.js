@@ -40,7 +40,7 @@ class Job{
                 j.title,
                 j.salary,
                 j.equity,
-                j.company_handle
+                j.company_handle AS "companyHandle"
                 FROM jobs AS j
                 LEFT JOIN companies AS c ON c.handle = j.company_handle`;
 

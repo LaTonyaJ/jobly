@@ -4,6 +4,7 @@
 
 const express = require("express");
 const cors = require("cors");
+const bodyParser = require('body-parser');
 
 const { NotFoundError } = require("./expressError");
 
@@ -12,16 +13,14 @@ const authRoutes = require("./routes/auth");
 const companiesRoutes = require("./routes/companies");
 const usersRoutes = require("./routes/users");
 const jobRoutes = require("./routes/jobs");
-
-
 const morgan = require("morgan");
-
 const app = express();
 
 app.use(cors());
 app.use(express.json());
 app.use(morgan("tiny"));
 app.use(authenticateJWT);
+app.use(bodyParser.json());
 
 app.use("/auth", authRoutes);
 app.use("/companies", companiesRoutes);
